@@ -15,8 +15,8 @@ public class ResultData {
     public void getResult(int maxW, boolean traza, String fileName){
         if (traza) {
             System.out.println("\n****************** Traza del algoritmo ******************\n");
-            System.out.println("Ordenamos los objetos en relacion de valor partido" +
-                            " por peso de forma descendiente.");
+            System.out.println("Ordenamos los objetos en relacion al valor por unidad de" +
+                            " peso de forma descendiente.");
         }
         orderItems(items, 0, items.length - 1);
         int pesoAcumulado = 0;
@@ -28,7 +28,7 @@ public class ResultData {
         while (pesoAcumulado < maxW && contadorObj < items.length) {
             if (pesoAcumulado + items[contadorObj].peso <= maxW) {
                 if (traza) {
-                    System.out.println("* El peso del objeto evaluado es: " + items[contadorObj].peso + 
+                    System.out.println("\n* El peso del objeto evaluado es: " + items[contadorObj].peso + 
                     ", podemos meterlo entero y nos queda espacio en la mochila");
                     System.out.println("  Añadimos su valor al valor total dentro de la mochila");
                 }
@@ -43,8 +43,8 @@ public class ResultData {
                 pesoAcumulado = maxW;
                 beneficioTotal += beneficioFraccion[contadorObj] ;
                 if (traza) {
-                    System.out.println("* El peso del objeto evaluado es: " + items[contadorObj].peso +
-                    ", no podemos meterlo entero por tanto introducimos una fraccion");
+                    System.out.println("\n* El peso del objeto evaluado es: " + items[contadorObj].peso +
+                    ", no podemos meterlo entero por tanto introducimos una fraccion.");
                     System.out.println("  Con " + fraccionObjeto[contadorObj] + 
                     " parte del objeto llenamos la mochila, añadimos el valor equivalente " +
                     "a esa fraccion: \"" +beneficioFraccion[contadorObj] + "\".\n  Alcanzamos el maximo " +
@@ -57,20 +57,19 @@ public class ResultData {
                                     contadorObj + "\": " + pesoAcumulado);
         }
         if (fileName == "") {
-            if (traza) System.out.println("\nImprimimos los resultados en consola:\n");
+            if (traza) System.out.println("\nImprimimos los resultados en consola:");
             printResult(fraccionObjeto, beneficioFraccion, beneficioTotal, contadorObj);
         } else {
-            if (traza) System.out.println("\nIntroducimos los resultados en el archivo\n" +
+            if (traza) System.out.println("\nIntroducimos los resultados en el archivo" +
                                     fileName);
             resultToFile(fileName, fraccionObjeto, beneficioFraccion, beneficioTotal, contadorObj);
         }
     }
 
     private void printResult(float[] frac, float[] bfrac, float btotal, int limit) {
+        System.out.println("\nResultado:");
         for (int i = 0; i < limit; i++) {
-            System.out.println(
-                    items[i].peso + " " + frac[i] +
-                            " " + bfrac[i]);
+            System.out.println(items[i].peso + " " + frac[i] + " " + bfrac[i]);
         }
         System.out.println(btotal);
     }
@@ -91,9 +90,9 @@ public class ResultData {
         }
     }
 
-    private Item[] orderItems(Item[] array, int lowInd, int hiInd) {
+    private void orderItems(Item[] array, int lowInd, int hiInd) {
 
-        if (lowInd >= hiInd) return array;
+        if (lowInd >= hiInd) return ;
         float pivot = array[hiInd].ratio;
         int lpointer = lowInd;
         int rpointer = hiInd;
@@ -111,7 +110,5 @@ public class ResultData {
 
         orderItems(array, lowInd, lpointer-1);
         orderItems(array, lpointer+1, hiInd);
-
-        return array;
     }
 }

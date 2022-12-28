@@ -22,7 +22,10 @@ public class mochila_voraz {
                 result.getResult(data.maxW, false, "");
                 break;
             case 1:
-                if (args[0].equals("-h")) System.out.println(msg);
+                if (args[0].equals("-h")) {
+                    System.out.println(msg);
+                    break;
+                }
                 if (args[0].equals("-t")) {
                     data.setFromInputs();
                     result.setItems(data.values, data.weights);

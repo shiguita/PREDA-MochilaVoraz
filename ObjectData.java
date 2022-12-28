@@ -4,10 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ObjectData {
-    int num;
-    int[] values;
-    int[] weights;
-    int maxW;
+    public int num;
+    public int[] values;
+    public int[] weights;
+    public int maxW;
 
     public void setFromFile(String name) {
         try {
