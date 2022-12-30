@@ -18,8 +18,8 @@ public class mochila_voraz {
         switch (args.length) {
             case 0:
                 data.setFromInputs();
-                result.setItems(data.values, data.weights);
-                result.getResult(data.maxW, false, "");
+                result.setItems(data.getItems());
+                result.getResult(data.getMaxW(), false, "");
                 break;
             case 1:
                 if (args[0].equals("-h")) {
@@ -28,17 +28,17 @@ public class mochila_voraz {
                 }
                 if (args[0].equals("-t")) {
                     data.setFromInputs();
-                    result.setItems(data.values, data.weights);
-                    result.getResult(data.maxW, true, "");
+                    result.setItems(data.getItems());
+                    result.getResult(data.getMaxW(), true, "");
                 } else {
                     if (new File(args[0]).exists()) {
                         data.setFromFile(args[0]);
-                        result.setItems(data.values, data.weights);
-                        result.getResult(data.maxW, false, "");
+                        result.setItems(data.getItems());
+                        result.getResult(data.getMaxW(), false, "");
                     } else {
                         data.setFromInputs();
-                        result.setItems(data.values, data.weights);
-                        result.getResult(data.maxW, false, args[0]);
+                        result.setItems(data.getItems());
+                        result.getResult(data.getMaxW(), false, args[0]);
                     }
                 }
                 break;
@@ -46,23 +46,23 @@ public class mochila_voraz {
                 if (args[0].equals("-t")) {
                     if (new File(args[1]).exists()) {
                         data.setFromFile(args[1]);
-                        result.setItems(data.values, data.weights);
-                        result.getResult(data.maxW, true, "");
+                        result.setItems(data.getItems());
+                        result.getResult(data.getMaxW(), true, "");
                     } else {
                         data.setFromInputs();
-                        result.setItems(data.values, data.weights);
-                        result.getResult(data.maxW, true, args[1]);
+                        result.setItems(data.getItems());
+                        result.getResult(data.getMaxW(), true, args[1]);
                     }
                 } else {
                     data.setFromFile(args[0]);
-                    result.setItems(data.values, data.weights);
-                    result.getResult(data.maxW, false, args[1]);
+                    result.setItems(data.getItems());
+                    result.getResult(data.getMaxW(), false, args[1]);
                 }
                 break;
             case 3:
                 data.setFromFile(args[1]);
-                result.setItems(data.values, data.weights);
-                result.getResult(data.maxW, true, args[2]);
+                result.setItems(data.getItems());
+                result.getResult(data.getMaxW(), true, args[2]);
                 break;
 
             default:
